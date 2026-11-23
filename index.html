@@ -621,7 +621,7 @@ select.field{padding-right:8px}
     say("Отправляем…");
 
     var ctrl = typeof AbortController === "function" ? new AbortController() : null;
-    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 25000);
 
     fetch("/.netlify/functions/order", {
       method: "POST",
@@ -637,7 +637,7 @@ select.field{padding-right:8px}
         } else if (res.status === 429) {
           say("Слишком много заявок подряд. Попробуйте через несколько минут.", "err");
         } else {
-          say("Не удалось отправить. Напишите мне напрямую в Telegram: @i_not_friends.", "err");
+          say("Не удалось отправить (код " + res.status + (j.error ? ", " + j.error : "") + (j.detail ? ": " + j.detail : "") + "). Напишите мне напрямую в Telegram: @i_not_friends.", "err");
         }
       });
     }).catch(function () {
