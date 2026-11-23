@@ -623,7 +623,7 @@ select.field{padding-right:8px}
     var ctrl = typeof AbortController === "function" ? new AbortController() : null;
     var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 25000);
 
-    fetch("/.netlify/functions/order", {
+    fetch("/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
